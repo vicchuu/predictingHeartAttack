@@ -30,7 +30,19 @@ xtrain,xtest,ytrain,ytest=train_test_split(X,Y,test_size=0.2,random_state=2,stra
 # logistic regression
 print(X.shape,Y.shape)
 
+
+"""Appling scaling function"""
+sc=StandardScaler()
+xtrain=sc.fit_transform(xtrain)
+xtest=sc.fit_transform(xtest)
+
+
+"""sns plotting"""
+#sbn.displot(x=xtrain,y=ytrain,data=dataset,hue=None)
+
+
 """Logistic regression """
+
 logiReg=LogisticRegression()
 logiReg.fit(xtrain,ytrain)
 predicted=logiReg.predict(xtrain)
@@ -47,19 +59,19 @@ but here we have more x values"""
 
 #sbn.regplot(x=Y,y=Y,data=dataset,logistic=True,ci=None)
 
-plt.scatter(xtrain["age"],Y,color="blue")
-plt.plot(xtrain,predicted,color="red")
-plt.xlabel("xvalue")
-plt.ylabel("ylabel")
-plt.title("ply regression results")
-plt.show()
+# plt.scatter(xtrain["age"],Y,color="blue")
+# plt.plot(xtrain,predicted,color="red")
+# plt.xlabel("xvalue")
+# plt.ylabel("ylabel")
+# plt.title("ply regression results")
+# plt.show()
 
 #predictPoly=as.pred
 
 
 
 accuracyScore=accuracy_score(predicted,ytrain)
-print(accuracyScore)
+print("Accuracy score : ",accuracyScore)
 #afterModel=logiReg.fitT
 """Buillding predictive model"""
 data=[57,1,0,110,335,0,1,143,1,3,1,1,3]
